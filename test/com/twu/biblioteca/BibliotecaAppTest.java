@@ -23,8 +23,8 @@ public class BibliotecaAppTest {
         BibliotecaApp biblioteca = new BibliotecaApp();
 
         List<String> books = new ArrayList<String>();
-        books.add("TDD By Example");
-        books.add("The Clean Coder");
+        books.add("TDD By Example | Kent Beck | 2000");
+        books.add("The Clean Coder | Uncle Bob | 2011");
 
         assertThat(
                 biblioteca.getListOfBooks(),

@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,8 +19,8 @@ public class BibliotecaApp {
 
         List<String> listOfBooks = new ArrayList<String>();
 
-        listOfBooks.add("TDD By Example");
-        listOfBooks.add("The Clean Coder");
+        listOfBooks.add("TDD By Example | Kent Beck | 2000");
+        listOfBooks.add("The Clean Coder | Uncle Bob | 2011");
 
         return listOfBooks;
     }
