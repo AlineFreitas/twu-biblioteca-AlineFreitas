@@ -33,4 +33,22 @@ public class BibliotecaAppTest {
                 is(books)
         );
     }
+
+    @Test
+    public void shouldDisplayMenu() {
+
+        assertThat(
+                BibliotecaApp.displayMenu(),
+                is("1. View List Of Books")
+        );
+    }
+
+    @Test
+    public void shouldShowListOfBooksWhenUserSelectFirstOption() {
+
+        assertThat(
+                BibliotecaApp.processOption(1),
+                is(BibliotecaApp.getListOfBooks())
+        );
+    }
 }
