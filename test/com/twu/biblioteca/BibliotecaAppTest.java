@@ -47,7 +47,7 @@ public class BibliotecaAppTest {
     public void shouldShowListOfBooksWhenUserSelectFirstOption() {
 
         assertThat(
-                BibliotecaApp.getListOfBooks(),
+                BibliotecaApp.processOption(1),
                 is(BibliotecaApp.getListOfBooks().toString())
         );
     }
