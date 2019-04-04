@@ -6,11 +6,13 @@ import java.util.Scanner;
 
 public class BibliotecaApp {
 
+    static Printer printer = new Printer(System.out);
+
     public static void main(String[] args) {
 
-        System.out.println(greet());
-        System.out.println(displayMenu());
-        System.out.println(processOption(getOption()));
+        printer.print(greet());
+        printer.print(displayMenu());
+        processOption(getOption());
     }
 
     public static String greet() {
@@ -42,12 +44,12 @@ public class BibliotecaApp {
         return option;
     }
 
-    public static String processOption(int option) {
+    public static void processOption(int option) {
 
         switch (option) {
-            case 1: return getListOfBooks().toString();
+            case 1: getListOfBooks().toString();
 
-            default: return "Please select a valid option!";
+            default: printer.print("Please select a valid option!");
         }
     }
 }
