@@ -47,8 +47,25 @@ public class BibliotecaAppTest {
     public void shouldShowListOfBooksWhenUserSelectFirstOption() {
 
         assertThat(
-                BibliotecaApp.processOption(1),
-                is(BibliotecaApp.getListOfBooks())
+                BibliotecaApp.getListOfBooks(),
+                is(BibliotecaApp.getListOfBooks().toString())
+        );
+    }
+
+    @Test
+    public void shouldNotifyIfOptionIsInvalid() {
+
+        assertThat(
+                BibliotecaApp.processOption(-1),
+                is("Please select a valid option!")
+        );
+    }
+
+    @Test
+    public void shouldExitApplicationWhenISelectThisOption() {
+        assertThat(
+                BibliotecaApp.processOption(0),
+                is(System.exit(0))
         );
     }
 }

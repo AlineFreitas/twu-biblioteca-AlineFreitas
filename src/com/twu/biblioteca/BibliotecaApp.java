@@ -42,11 +42,12 @@ public class BibliotecaApp {
         return option;
     }
 
-    public static List<String> processOption(int option) {
+    public static String processOption(int option) {
 
         switch (option) {
-            case 1: return getListOfBooks();
+            case 1: return getListOfBooks().toString();
+
+            default: return "Please select a valid option!";
         }
-        return null;
     }
 }
