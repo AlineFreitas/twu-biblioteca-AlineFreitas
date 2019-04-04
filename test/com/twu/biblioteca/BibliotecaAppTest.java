@@ -11,15 +11,17 @@ import static org.junit.Assert.*;
 public class BibliotecaAppTest {
 
     @Test
-    public void greet() {
-        assertEquals(
-                "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!",
-                BibliotecaApp.greet()
+    public void shouldGreetUser() {
+
+        assertThat(
+                BibliotecaApp.greet(),
+                is("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!")
         );
     }
 
     @Test
     public void sholdHaveAListOfBooks() {
+
         BibliotecaApp biblioteca = new BibliotecaApp();
 
         List<String> books = new ArrayList<String>();
