@@ -31,7 +31,7 @@ public class BibliotecaApp {
 
     public static String displayMenu() {
 
-        return "1. View List Of Books\n0. Quit application";
+        return "1. View List Of Books\n2. Check-out Book\n3. Return Book\n0. Quit application";
     }
 
     public static int getOption() {

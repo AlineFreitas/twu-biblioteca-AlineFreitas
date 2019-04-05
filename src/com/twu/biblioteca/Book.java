@@ -6,10 +6,17 @@ public class Book {
     private int publishYear;
     private String title;
 
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
+    private boolean available;
+
     Book(String title, int publishYear, String author){
         this.title = title;
         this.publishYear = publishYear;
         this.author = author;
+        this.available = true;
 
     }
 
@@ -23,5 +30,17 @@ public class Book {
 
     public String getAuthor() {
         return this.author;
+    }
+
+    public void checkout() {
+        this.available = false;
+    }
+
+    public boolean isAvailable() {
+        return this.available;
+    }
+
+    public void checkin() {
+        setAvailable(true);
     }
 }

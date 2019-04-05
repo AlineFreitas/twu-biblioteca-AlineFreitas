@@ -51,7 +51,7 @@ public class BibliotecaAppTest {
 
         assertThat(
                 BibliotecaApp.displayMenu(),
-                is("1. View List Of Books\n0. Quit application")
+                is("1. View List Of Books\n2. Check-out Book\n3. Return Book\n0. Quit application")
         );
     }
 
