@@ -6,8 +6,6 @@ import java.util.Scanner;
 
 public class BibliotecaApp {
 
-    static Printer printer = new Printer(System.out);
-
     public static void main(String[] args) {
 
         System.out.println(greet());
