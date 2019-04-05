@@ -10,8 +10,8 @@ public class BibliotecaApp {
 
     public static void main(String[] args) {
 
-        printer.print(greet());
-        printer.print(displayMenu());
+        System.out.println(greet());
+        System.out.println(displayMenu());
         processOption(getOption());
     }
 
@@ -33,7 +33,7 @@ public class BibliotecaApp {
 
     public static String displayMenu() {
 
-        return "1. View List Of Books";
+        return "1. View List Of Books\n0. Quit application";
     }
 
     public static int getOption() {
@@ -47,9 +47,15 @@ public class BibliotecaApp {
     public static void processOption(int option) {
 
         switch (option) {
-            case 1: getListOfBooks().toString();
+            case 0:
+                System.exit(0);
+                break;
+            case 1:
+                System.out.println(getListOfBooks());
+                break;
 
-            default: printer.print("Please select a valid option!");
+            default:
+                System.out.println("Please select a valid option!");
         }
     }
 }

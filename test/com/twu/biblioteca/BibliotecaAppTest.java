@@ -1,8 +1,11 @@
 package com.twu.biblioteca;
 
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +13,14 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 public class BibliotecaAppTest {
+
+    final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+
+    @Before
+    public void setup() {
+
+        System.setOut(new PrintStream(outContent));
+    }
 
     @Test
     public void shouldGreetUser() {
@@ -40,7 +51,7 @@ public class BibliotecaAppTest {
 
         assertThat(
                 BibliotecaApp.displayMenu(),
-                is("1. View List Of Books")
+                is("1. View List Of Books\n0. Quit application")
         );
     }
 
@@ -49,25 +60,29 @@ public class BibliotecaAppTest {
 
         BibliotecaApp.processOption(1);
         assertThat(
-                ,
-                is(BibliotecaApp.getListOfBooks().toString())
+                outContent.toString(),
+                is(BibliotecaApp.getListOfBooks().toString() + "\n")
+        );
+    }
+
+    @Test
+    public void shouldNotifyIfOptionIsInvalid() {
+
+        BibliotecaApp.processOption(-1);
+
+        assertThat(
+                outContent.toString(),
+                is("Please select a valid option!\n")
         );
     }
 
     @Test
     @Ignore
-    public void shouldNotifyIfOptionIsInvalid() {
-
-        //assertThat(
-        //        BibliotecaApp.processOption(-1),
-        //        is("Please select a valid option!")
-        //);
-    }
-
-    @Test
     public void shouldExitApplicationWhenISelectThisOption() {
 
-
-
+//        assertThat(
+//                BibliotecaApp.processOption(0),
+//                is(System.exit(0))
+//        );
     }
 }
