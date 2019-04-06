@@ -32,7 +32,7 @@ public class Book {
         return this.author;
     }
 
-    public void checkout() {
+    public void check_out() {
         this.available = false;
     }
 
@@ -40,7 +40,7 @@ public class Book {
         return this.available;
     }
 
-    public void checkin() {
+    public void check_in() {
         setAvailable(true);
     }
 }

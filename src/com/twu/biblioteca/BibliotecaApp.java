@@ -8,14 +8,16 @@ public class BibliotecaApp {
 
     public static void main(String[] args) {
 
-        System.out.println(greet());
-        System.out.println(displayMenu());
+        BibliotecaApp bib = new BibliotecaApp();
+
+        bib.greet();
+        bib.displayMenu();
         processOption(getOption());
     }
 
-    public static String greet() {
+    public void greet() {
 
-        return "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
+        System.out.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
     }
 
 
@@ -29,14 +31,15 @@ public class BibliotecaApp {
         return listOfBooks;
     }
 
-    public static String displayMenu() {
+    public void displayMenu() {
 
-        return "1. View List Of Books\n2. Check-out Book\n3. Return Book\n0. Quit application";
+        System.out.println("1. View List Of Books\n2. Check-out Book\n3. Return Book\n0. Quit application");
     }
 
     public static int getOption() {
 
         Scanner input = new Scanner(System.in);
+
         int option = input.nextInt();
 
         return option;
@@ -45,11 +48,19 @@ public class BibliotecaApp {
     public static void processOption(int option) {
 
         switch (option) {
+
             case 0:
                 System.exit(0);
                 break;
+
             case 1:
                 System.out.println(getListOfBooks());
+                break;
+
+            case 2:
+                break;
+
+            case 3:
                 break;
 
             default:

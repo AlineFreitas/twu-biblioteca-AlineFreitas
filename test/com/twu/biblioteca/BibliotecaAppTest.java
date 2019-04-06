@@ -14,10 +14,14 @@ import static org.junit.Assert.*;
 
 public class BibliotecaAppTest {
 
+    private BibliotecaApp biblioteca;
+
     final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @Before
     public void setup() {
+
+        biblioteca = new BibliotecaApp();
 
         System.setOut(new PrintStream(outContent));
     }
@@ -25,9 +29,11 @@ public class BibliotecaAppTest {
     @Test
     public void shouldGreetUser() {
 
+        biblioteca.greet();
+
         assertThat(
-                BibliotecaApp.greet(),
-                is("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!")
+                outContent.toString(),
+                is("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!\n")
         );
     }
 
@@ -49,9 +55,11 @@ public class BibliotecaAppTest {
     @Test
     public void shouldDisplayMenu() {
 
+        biblioteca.displayMenu();
+
         assertThat(
-                BibliotecaApp.displayMenu(),
-                is("1. View List Of Books\n2. Check-out Book\n3. Return Book\n0. Quit application")
+                outContent.toString(),
+                is("1. View List Of Books\n2. Check-out Book\n3. Return Book\n0. Quit application\n")
         );
     }
 
@@ -66,7 +74,7 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void shouldNotifyIfOptionIsInvalid() {
+    public void shouldNotifyIfSelectedOptionIsInvalid() {
 
         BibliotecaApp.processOption(-1);
 
@@ -78,7 +86,7 @@ public class BibliotecaAppTest {
 
     @Test
     @Ignore
-    public void shouldExitApplicationWhenISelectThisOption() {
+    public void shouldExitApplicationWhenOption0IsSelected() {
 
 //        assertThat(
 //                BibliotecaApp.processOption(0),
