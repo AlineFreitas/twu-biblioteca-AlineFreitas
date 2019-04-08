@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +48,7 @@ public class Library {
         return null;
     }
 
-    public List<Book> getListOfBooks() {
+    public List<Book> getListOfAvailableBooks() {
 
         List<Book> listOfBooks = new ArrayList<Book>();
 
@@ -60,5 +59,12 @@ public class Library {
         }
 
         return listOfBooks;
+    }
+
+    public void printAvailableBooks() {
+
+        for (Book book : getListOfAvailableBooks()) {
+            System.out.println(book.toString());
+        }
     }
 }

@@ -1,9 +1,10 @@
 package com.twu.biblioteca;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,9 +25,10 @@ public class LibraryTest {
 
         List<Book> catalog = new ArrayList<Book>();
         tddByExample = new Book("TDD By Example", 2002, "Kent Beck");
-        theCleanCoder = new Book("The Clean Cooder", 2011, "Uncle Bob");
+        theCleanCoder = new Book("The Clean Coder", 2011, "Uncle Bob");
 
         catalog.add(tddByExample);
+        catalog.add(theCleanCoder);
 
         library = new Library(catalog);
     }
@@ -75,9 +77,23 @@ public class LibraryTest {
         library.checkoutBook("TDD By Example");
 
         assertThat(
-                library.getListOfBooks(),
+                library.getListOfAvailableBooks(),
                 not(hasItem(tddByExample))
         );
 
+    }
+
+    @Test
+    public void shouldPrintAvailableBooks() {
+
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+
+        System.setOut(new PrintStream(outContent));
+
+        library.printAvailableBooks();
+        assertThat(
+                outContent.toString(),
+                is("TDD By Example | Kent Beck | 2002\nThe Clean Coder | Uncle Bob | 2011\n")
+        );
     }
 }

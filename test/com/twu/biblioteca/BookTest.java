@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 public class BookTest {
@@ -59,6 +60,14 @@ public class BookTest {
 
         assertTrue(
                 book.isAvailable()
+        );
+    }
+
+    @Test
+    public void shouldPrintFormattedMetaInformation() {
+
+        assertThat(book.toString(),
+                is("Test Driven Development: By Example | Kent Beck | 2002")
         );
     }
 
