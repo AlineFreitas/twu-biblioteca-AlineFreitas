@@ -19,9 +19,11 @@ public class Library {
         } else {
             if (book.isAvailable()) {
                 book.check_out();
+                System.out.println("Thank you! Enjoy the book");
                 return true;
             }
         }
+        System.out.println("Sorry, that book is not available");
         return false;
     }
 

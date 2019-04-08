@@ -96,4 +96,16 @@ public class LibraryTest {
                 is("TDD By Example | Kent Beck | 2002\nThe Clean Coder | Uncle Bob | 2011\n")
         );
     }
+
+    @Test
+    public void shouldShowReturnedBook() {
+
+        library.checkoutBook("TDD By Example");
+        library.returnBook("TDD By Example");
+
+        assertThat(
+                library.getListOfAvailableBooks(),
+                hasItem(tddByExample)
+        );
+    }
 }
