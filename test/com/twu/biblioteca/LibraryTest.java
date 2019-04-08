@@ -7,19 +7,24 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.core.IsCollectionContaining.hasItem;
 import static org.junit.Assert.*;
 
 public class LibraryTest {
 
     private Library library;
     private Book tddByExample;
+    private Book theCleanCoder;
 
     @Before
     public void setup() {
+
         List<Book> catalog = new ArrayList<Book>();
         tddByExample = new Book("TDD By Example", 2002, "Kent Beck");
+        theCleanCoder = new Book("The Clean Cooder", 2011, "Uncle Bob");
 
         catalog.add(tddByExample);
 
@@ -55,6 +60,7 @@ public class LibraryTest {
 
     @Test
     public void shouldReturnBookIfExistsAndUnavailable() {
+
         library.checkoutBook("TDD By Example");
 
         assertThat(
@@ -64,7 +70,14 @@ public class LibraryTest {
     }
 
     @Test
-    public void shouldGetBookByTitle() {
+    public void listShouldNotShowBorrowedBooks() {
+
+        library.checkoutBook("TDD By Example");
+
+        assertThat(
+                library.getListOfBooks(),
+                not(hasItem(tddByExample))
+        );
 
     }
 }

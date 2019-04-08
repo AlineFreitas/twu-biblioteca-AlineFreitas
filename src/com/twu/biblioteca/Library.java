@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
@@ -45,5 +47,18 @@ public class Library {
             }
         }
         return null;
+    }
+
+    public List<Book> getListOfBooks() {
+
+        List<Book> listOfBooks = new ArrayList<Book>();
+
+        for (Book book : catalog) {
+            if (book.isAvailable()) {
+                listOfBooks.add(book);
+            }
+        }
+
+        return listOfBooks;
     }
 }
