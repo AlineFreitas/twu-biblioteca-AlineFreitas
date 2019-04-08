@@ -11,11 +11,30 @@ public class Library {
 
 
     public boolean checkoutBook(String bookTitle) {
+        Book book = getBookByTitle(bookTitle);
 
+        if (book == null) {
+            return false;
+        } else {
+            if (book.isAvailable()) {
+                book.check_out();
+                return true;
+            }
+        }
         return false;
     }
 
     public boolean returnBook(String bookTitle) {
+        Book book = getBookByTitle(bookTitle);
+
+        if (book == null) {
+            return false;
+        } else {
+            if (!book.isAvailable()) {
+                book.check_in();
+                return true;
+            }
+        }
         return false;
     }
 

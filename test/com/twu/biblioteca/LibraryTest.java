@@ -45,9 +45,7 @@ public class LibraryTest {
     }
 
     @Test
-    @Ignore
     public void shouldCheckoutBookIfAvailable() {
-
 
         assertThat(
                 library.checkoutBook("TDD By Example"),
@@ -56,8 +54,13 @@ public class LibraryTest {
     }
 
     @Test
-    public void shouldReturnBookIfExists() {
+    public void shouldReturnBookIfExistsAndUnavailable() {
+        library.checkoutBook("TDD By Example");
 
+        assertThat(
+                library.returnBook("TDD By Example"),
+                is(true)
+        );
     }
 
     @Test
