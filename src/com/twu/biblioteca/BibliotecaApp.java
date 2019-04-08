@@ -11,8 +11,17 @@ public class BibliotecaApp {
         BibliotecaApp bib = new BibliotecaApp();
 
         bib.greet();
-        bib.displayMenu();
-        processOption(getOption());
+
+        int option = 0;
+
+        do{
+
+            bib.displayMenu();
+            option = getOption();
+            processOption(option);
+
+        } while (option != 0);
+
     }
 
     public void greet() {
