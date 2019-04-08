@@ -31,10 +31,12 @@ public class Library {
         Book book = getBookByTitle(bookTitle);
 
         if (book == null) {
+            System.out.println("That is not a valid book to return");
             return false;
         } else {
             if (!book.isAvailable()) {
                 book.check_in();
+                System.out.println("Thank you for returning the book");
                 return true;
             }
         }
