@@ -15,6 +15,7 @@ public class Library {
         Book book = getBookByTitle(bookTitle);
 
         if (book == null) {
+            System.out.println("Sorry, that book is not available");
             return false;
         } else {
             if (book.isAvailable()) {
