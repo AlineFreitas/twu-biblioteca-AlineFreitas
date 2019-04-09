@@ -13,14 +13,20 @@ public class BibliotecaApp {
         BibliotecaApp bib = new BibliotecaApp();
         BibliotecaApp.greet();
 
-        List<Book> catalog = new ArrayList<Book>();
+        List<Book> bookCatalog = new ArrayList<Book>();
+        List<Movie> movieCatalog = new ArrayList<Movie>();
 
-        catalog.add(new Book("TDD By Example", 2002, "Kent Beck"));
-        catalog.add(new Book("The Clean Coder", 2011, "Uncle Bob"));
-        catalog.add(new Book("Clean Code", 2008, "Uncle Bob"));
-        catalog.add(new Book("The Pragmatic Programmer", 1999, "Andrew Hunt"));
+        bookCatalog.add(new Book("TDD By Example", 2002, "Kent Beck"));
+        bookCatalog.add(new Book("The Clean Coder", 2011, "Uncle Bob"));
+        bookCatalog.add(new Book("Clean Code", 2008, "Uncle Bob"));
+        bookCatalog.add(new Book("The Pragmatic Programmer", 1999, "Andrew Hunt"));
 
-        bib.library = new Library(catalog);
+        movieCatalog.add(new Movie("Kill Bill Vol. 1", 2003, 8, "Quentin Tarantino"));
+        movieCatalog.add(new Movie("Snatch", 2000, 8, "Guy Ritchie"));
+        movieCatalog.add(new Movie("Get Out", 2017, 8, "Jordan Peele"));
+        movieCatalog.add(new Movie("Pulp Fiction", 1994, 9, "Quentin Tarantino"));
+
+        bib.library = new Library(bookCatalog, movieCatalog);
 
         int option;
 
@@ -39,7 +45,12 @@ public class BibliotecaApp {
 
     public static void displayMenu() {
 
-        System.out.println("1. View List Of Books\n2. Check-out Book\n3. Return Book\n0. Quit application");
+
+        System.out.println("--------------Book Section------------------");
+        System.out.println("1. View List Of Books\n2. Check-out Book\n3. Return Book");
+        System.out.println("--------------Movie Section-----------------");
+        System.out.println("4. View List Of Movies\n5. Check-out Movie\n6. Return Movie");
+        System.out.println("0. Quit application");
     }
 
     public static int getOption() {
@@ -54,6 +65,7 @@ public class BibliotecaApp {
     public void processOption(int option) {
         Scanner input = new Scanner(System.in);
         String bookTitle;
+        String movieTitle;
 
         switch (option) {
 
@@ -75,6 +87,22 @@ public class BibliotecaApp {
                 System.out.println("Type the book title to return:");
                 bookTitle = input.nextLine();
                 this.library.returnBook(bookTitle);
+                break;
+
+            case 4:
+                this.library.printAvailableMovies();
+                break;
+
+            case 5:
+                System.out.println("Type the movie title to checkout:");
+                movieTitle = input.nextLine();
+                this.library.borrowMovie(movieTitle);
+                break;
+
+            case 6:
+                System.out.println("Type the movie title to return:");
+                movieTitle = input.nextLine();
+                this.library.returnMovie(movieTitle);
                 break;
 
             default:

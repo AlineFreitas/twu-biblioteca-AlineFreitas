@@ -4,6 +4,10 @@ public class Borrowable {
 
     boolean available;
 
+    Borrowable(){
+        this.available = true;
+    }
+
 
     public void setAvailable(boolean available) {
         this.available = available;

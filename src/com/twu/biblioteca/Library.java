@@ -5,16 +5,14 @@ import java.util.List;
 
 public class Library {
 
-    private List<Book> catalog;
+    private List<Book> bookCatalog;
+    private List<Movie> movieCatalog;
 
-    public Library(List<Book> catalog) {
-        this.catalog = catalog;
+    public Library(List<Book> bookCatalog, List<Movie> movieCatalog) {
+        this.bookCatalog = bookCatalog;
+        this.movieCatalog = movieCatalog;
     }
 
-
-    public List<Book> getCatalog() {
-        return catalog;
-    }
 
     public boolean borrowBook(String bookTitle) {
         Book book = getBookByTitle(bookTitle);
@@ -50,7 +48,7 @@ public class Library {
     }
 
     public Book getBookByTitle(String bookTitle) {
-        for (Book book : catalog) {
+        for (Book book : bookCatalog) {
             if (book.getTitle().equals(bookTitle)) {
                 return book;
             }
@@ -62,7 +60,7 @@ public class Library {
 
         List<Book> listOfBooks = new ArrayList<Book>();
 
-        for (Book book : catalog) {
+        for (Book book : bookCatalog) {
             if (book.isAvailable()) {
                 listOfBooks.add(book);
             }
@@ -76,5 +74,29 @@ public class Library {
         for (Book book : getListOfAvailableBooks()) {
             System.out.println(book.toString());
         }
+    }
+
+    public void printAvailableMovies() {
+
+        for (Movie movie : getListOfAvailableMovies()) {
+            System.out.println(movie.toString());
+        }
+    }
+
+    private List<Movie> getListOfAvailableMovies() {
+        List<Movie> listOfMovies = new ArrayList<Movie>();
+
+        for (Movie movie : movieCatalog) {
+            if (movie.isAvailable()) {
+                listOfMovies.add(movie);
+            }
+        }
+        return listOfMovies;
+    }
+
+    public void borrowMovie(String movieTitle) {
+    }
+
+    public void returnMovie(String movieTitle) {
     }
 }

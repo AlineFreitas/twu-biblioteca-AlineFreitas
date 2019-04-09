@@ -13,7 +13,6 @@ public class Book extends Borrowable {
         this.title = title;
         this.publishYear = publishYear;
         this.author = author;
-        this.available = true;
 
     }
 

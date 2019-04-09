@@ -19,18 +19,29 @@ public class LibraryTest {
     private Library library;
     private Book tddByExample;
     private Book theCleanCoder;
+    private Movie killBill;
+    private Movie pulpFiction;
 
     @Before
     public void setup() {
 
-        List<Book> catalog = new ArrayList<Book>();
+        List<Book> bookCatalog = new ArrayList<Book>();
+        List<Movie> movieCatalog = new ArrayList<Movie>();
+
         tddByExample = new Book("TDD By Example", 2002, "Kent Beck");
         theCleanCoder = new Book("The Clean Coder", 2011, "Uncle Bob");
 
-        catalog.add(tddByExample);
-        catalog.add(theCleanCoder);
+        killBill = new Movie("Kill Bill Vol. 1", 2003, 8, "Quentin Tarantino");
+        pulpFiction = new Movie("Pulp Fiction", 1994, 9, "Quentin Tarantino");
 
-        library = new Library(catalog);
+
+        bookCatalog.add(tddByExample);
+        bookCatalog.add(theCleanCoder);
+
+        movieCatalog.add(killBill);
+        movieCatalog.add(pulpFiction);
+
+        library = new Library(bookCatalog, movieCatalog);
     }
 
     @Test
@@ -106,6 +117,20 @@ public class LibraryTest {
         assertThat(
                 library.getListOfAvailableBooks(),
                 hasItem(tddByExample)
+        );
+    }
+
+    @Test
+    public void shouldPrintAvailableMovies() {
+
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+
+        System.setOut(new PrintStream(outContent));
+
+        library.printAvailableMovies();
+        assertThat(
+                outContent.toString(),
+                is("Kill Bill Vol. 1 | 2003 | Quentin Tarantino | 8\nPulp Fiction | 1994 | Quentin Tarantino | 9\n")
         );
     }
 
