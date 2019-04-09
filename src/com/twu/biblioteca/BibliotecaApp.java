@@ -28,6 +28,8 @@ public class BibliotecaApp {
 
         bib.library = new Library(bookCatalog, movieCatalog);
 
+        UserHandler.setUserList();
+
         int option;
 
         do{
@@ -47,9 +49,18 @@ public class BibliotecaApp {
 
 
         System.out.println("--------------Book Section------------------");
-        System.out.println("1. View List Of Books\n2. Check-out Book\n3. Return Book");
+        System.out.println(
+                "1. View List Of Books\n" +
+                "2. Check-out Book\n" +
+                "3. Return Book"
+        );
         System.out.println("--------------Movie Section-----------------");
-        System.out.println("4. View List Of Movies\n5. Check-out Movie\n6. Return Movie");
+        System.out.println(
+                "4. View List Of Movies\n" +
+                "5. Check-out Movie\n" +
+                "6. Return Movie");
+        System.out.println("--------------User Section-----------------");
+        System.out.println("7. Login");
         System.out.println("0. Quit application");
     }
 
@@ -105,6 +116,13 @@ public class BibliotecaApp {
                 this.library.returnMovie(movieTitle);
                 break;
 
+            case 7:
+                System.out.println("Type the library number:");
+                String libraryNumber = input.nextLine();
+                System.out.println("Type the password:");
+                String password = input.nextLine();
+                UserHandler.login(libraryNumber, password);
+                break;
             default:
                 System.out.println("Please select a valid option!");
         }

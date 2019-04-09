@@ -29,7 +29,7 @@ public class UserHandlerTest {
                 UserHandler.login("123-4567", "incorrect password"),
                 is(false)
         );
-        
+
         assertThat(
                 UserHandler.login("not registered lib number", "some password"),
                 is(false)
