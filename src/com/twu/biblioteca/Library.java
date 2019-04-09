@@ -7,6 +7,7 @@ public class Library {
 
     private List<Book> bookCatalog;
     private List<Movie> movieCatalog;
+    private List<User> userList;
 
     public Library(List<Book> bookCatalog, List<Movie> movieCatalog) {
         this.bookCatalog = bookCatalog;

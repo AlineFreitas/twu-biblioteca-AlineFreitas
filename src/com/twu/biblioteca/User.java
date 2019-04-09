@@ -19,4 +19,11 @@ public class User {
         }
         return false;
     }
+
+    public boolean verifyPassword(String password) {
+        if (this.password == password) {
+            return true;
+        }
+        return false;
+    }
 }
