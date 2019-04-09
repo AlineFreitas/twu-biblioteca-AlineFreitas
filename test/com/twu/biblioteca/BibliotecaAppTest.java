@@ -38,21 +38,6 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void sholdHaveAListOfBooks() {
-
-        BibliotecaApp biblioteca = new BibliotecaApp();
-
-        List<String> books = new ArrayList<String>();
-        books.add("TDD By Example | Kent Beck | 2000");
-        books.add("The Clean Coder | Uncle Bob | 2011");
-
-        assertThat(
-                biblioteca.getListOfBooks(),
-                is(books)
-        );
-    }
-
-    @Test
     public void shouldDisplayMenu() {
 
         biblioteca.displayMenu();
@@ -60,17 +45,6 @@ public class BibliotecaAppTest {
         assertThat(
                 outContent.toString(),
                 is("1. View List Of Books\n2. Check-out Book\n3. Return Book\n0. Quit application\n")
-        );
-    }
-
-    @Test
-    @Ignore
-    public void shouldPrintListOfBooksWhenUserSelectOption1() {
-
-        biblioteca.processOption(1);
-        assertThat(
-                outContent.toString(),
-                is(BibliotecaApp.getListOfBooks().toString() + "\n")
         );
     }
 
@@ -85,13 +59,4 @@ public class BibliotecaAppTest {
         );
     }
 
-    @Test
-    @Ignore
-    public void shouldExitApplicationWhenOption0IsSelected() {
-
-//        assertThat(
-//                BibliotecaApp.processOption(0),
-//                is(System.exit(0))
-//        );
-    }
 }

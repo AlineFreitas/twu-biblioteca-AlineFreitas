@@ -4,12 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
+
     private List<Book> catalog;
 
     public Library(List<Book> catalog) {
         this.catalog = catalog;
     }
 
+
+    public List<Book> getCatalog() {
+        return catalog;
+    }
 
     public boolean checkoutBook(String bookTitle) {
         Book book = getBookByTitle(bookTitle);

@@ -37,17 +37,6 @@ public class BibliotecaApp {
         System.out.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
     }
 
-
-    public static List<String> getListOfBooks() {
-
-        List<String> listOfBooks = new ArrayList<String>();
-
-        listOfBooks.add("TDD By Example | Kent Beck | 2000");
-        listOfBooks.add("The Clean Coder | Uncle Bob | 2011");
-
-        return listOfBooks;
-    }
-
     public static void displayMenu() {
 
         System.out.println("1. View List Of Books\n2. Check-out Book\n3. Return Book\n0. Quit application");
@@ -64,6 +53,7 @@ public class BibliotecaApp {
 
     public void processOption(int option) {
         Scanner input = new Scanner(System.in);
+        String bookTitle;
 
         switch (option) {
 
@@ -77,7 +67,7 @@ public class BibliotecaApp {
 
             case 2:
                 System.out.println("Type the book title to checkout:");
-                String bookTitle = input.nextLine();
+                bookTitle = input.nextLine();
                 this.library.checkoutBook(bookTitle);
                 break;
 
