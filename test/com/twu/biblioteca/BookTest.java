@@ -45,7 +45,7 @@ public class BookTest {
     @Test
     public void shouldNotBeAvailableWhenSuccessfullyCheckedOut() {
 
-        book.check_out();
+        book.checkOut();
 
         assertFalse(
                 book.isAvailable()
@@ -56,7 +56,7 @@ public class BookTest {
     public void shouldBecomeAvailableWhenSuccessfullyReturned() {
 
         book.setAvailable(false);
-        book.check_in();
+        book.checkIn();
 
         assertTrue(
                 book.isAvailable()

@@ -1,7 +1,6 @@
 package com.twu.biblioteca;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -56,7 +55,7 @@ public class LibraryTest {
     public void shouldCheckoutBookIfAvailable() {
 
         assertThat(
-                library.checkoutBook("TDD By Example"),
+                library.borrowBook("TDD By Example"),
                 is(true)
         );
     }
@@ -64,7 +63,7 @@ public class LibraryTest {
     @Test
     public void shouldReturnBookIfExistsAndUnavailable() {
 
-        library.checkoutBook("TDD By Example");
+        library.borrowBook("TDD By Example");
 
         assertThat(
                 library.returnBook("TDD By Example"),
@@ -75,7 +74,7 @@ public class LibraryTest {
     @Test
     public void listShouldNotShowBorrowedBooks() {
 
-        library.checkoutBook("TDD By Example");
+        library.borrowBook("TDD By Example");
 
         assertThat(
                 library.getListOfAvailableBooks(),
@@ -101,7 +100,7 @@ public class LibraryTest {
     @Test
     public void shouldShowReturnedBook() {
 
-        library.checkoutBook("TDD By Example");
+        library.borrowBook("TDD By Example");
         library.returnBook("TDD By Example");
 
         assertThat(

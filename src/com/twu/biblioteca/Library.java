@@ -16,7 +16,7 @@ public class Library {
         return catalog;
     }
 
-    public boolean checkoutBook(String bookTitle) {
+    public boolean borrowBook(String bookTitle) {
         Book book = getBookByTitle(bookTitle);
 
         if (book == null) {
@@ -24,7 +24,7 @@ public class Library {
             return false;
         } else {
             if (book.isAvailable()) {
-                book.check_out();
+                book.checkOut();
                 System.out.println("Thank you! Enjoy the book");
                 return true;
             }
@@ -41,7 +41,7 @@ public class Library {
             return false;
         } else {
             if (!book.isAvailable()) {
-                book.check_in();
+                book.checkIn();
                 System.out.println("Thank you for returning the book");
                 return true;
             }

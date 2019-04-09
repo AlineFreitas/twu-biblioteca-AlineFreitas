@@ -1,14 +1,11 @@
 package com.twu.biblioteca;
 
-public class Book {
+public class Book extends Borrowable {
 
     private String author;
     private int publishYear;
     private String title;
 
-    public void setAvailable(boolean available) {
-        this.available = available;
-    }
 
     private boolean available;
 
@@ -37,15 +34,4 @@ public class Book {
         return this.author;
     }
 
-    public void check_out() {
-        this.available = false;
-    }
-
-    public boolean isAvailable() {
-        return this.available;
-    }
-
-    public void check_in() {
-        setAvailable(true);
-    }
 }

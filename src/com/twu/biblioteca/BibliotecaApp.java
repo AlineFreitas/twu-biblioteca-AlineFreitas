@@ -68,7 +68,7 @@ public class BibliotecaApp {
             case 2:
                 System.out.println("Type the book title to checkout:");
                 bookTitle = input.nextLine();
-                this.library.checkoutBook(bookTitle);
+                this.library.borrowBook(bookTitle);
                 break;
 
             case 3:
