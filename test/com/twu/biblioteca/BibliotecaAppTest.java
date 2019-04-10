@@ -41,7 +41,17 @@ public class BibliotecaAppTest {
 
         assertThat(
                 outContent.toString(),
-                is("1. View List Of Books\n2. Check-out Book\n3. Return Book\n0. Quit application\n")
+                is("--------------Book Section------------------\n" +
+                        "1. View List Of Books\n" +
+                        "2. Check-out Book\n" +
+                        "3. Return Book\n" +
+                        "--------------Movie Section-----------------\n" +
+                        "4. View List Of Movies\n" +
+                        "5. Check-out Movie\n" +
+                        "6. Return Movie\n" +
+                        "--------------User Section-----------------\n" +
+                        "7. Login\n" +
+                        "0. Quit application\n")
         );
     }
 
@@ -55,5 +65,4 @@ public class BibliotecaAppTest {
                 is("Please select a valid option!\n")
         );
     }
-
 }

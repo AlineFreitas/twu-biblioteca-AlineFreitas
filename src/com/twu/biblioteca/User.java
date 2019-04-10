@@ -10,11 +10,12 @@ public class User {
     }
 
     public String getLibraryNumber() {
+
         return this.libraryNumber;
     }
 
-    public boolean login(String libraryNumber, String password) {
-        if (this.libraryNumber == libraryNumber && this.password == password) {
+    public boolean verifyPassword(String password) {
+        if (this.password.equals(password)) {
             return true;
         }
         return false;

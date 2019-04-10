@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class BibliotecaApp {
 
     private Library library;
+    private User loggedUser;
 
     public static void main(String[] args) {
 
@@ -28,6 +29,8 @@ public class BibliotecaApp {
 
         bib.library = new Library(bookCatalog, movieCatalog);
 
+        UserHandler.setUserList();
+
         int option;
 
         do{
@@ -47,9 +50,18 @@ public class BibliotecaApp {
 
 
         System.out.println("--------------Book Section------------------");
-        System.out.println("1. View List Of Books\n2. Check-out Book\n3. Return Book");
+        System.out.println(
+                "1. View List Of Books\n" +
+                "2. Check-out Book\n" +
+                "3. Return Book"
+        );
         System.out.println("--------------Movie Section-----------------");
-        System.out.println("4. View List Of Movies\n5. Check-out Movie\n6. Return Movie");
+        System.out.println(
+                "4. View List Of Movies\n" +
+                "5. Check-out Movie\n" +
+                "6. Return Movie");
+        System.out.println("--------------User Section-----------------");
+        System.out.println("7. Login");
         System.out.println("0. Quit application");
     }
 
@@ -78,6 +90,9 @@ public class BibliotecaApp {
                 break;
 
             case 2:
+                if (loggedUser == null) {
+                    processOption(7);
+                }
                 System.out.println("Type the book title to checkout:");
                 bookTitle = input.nextLine();
                 this.library.borrowBook(bookTitle);
@@ -105,6 +120,18 @@ public class BibliotecaApp {
                 this.library.returnMovie(movieTitle);
                 break;
 
+            case 7:
+                do {
+                    System.out.println("Type the library number:");
+                    String libraryNumber = input.nextLine();
+                    System.out.println("Type the password:");
+                    String password = input.nextLine();
+                    loggedUser = UserHandler.login(libraryNumber, password);
+                    if (loggedUser == null) {
+                        System.out.println("Library number or password are incorrect, please try again");
+                    }
+                } while (loggedUser == null);
+                break;
             default:
                 System.out.println("Please select a valid option!");
         }
