@@ -5,11 +5,12 @@ import java.util.List;
 
 public class Catalog {
 
-    public List<Borrowable> items;
-
-    public List<Borrowable> unavailables;
-
+    private List<Borrowable> items;
     private ArrayList<String> borrow_log;
+
+    public void addItem(Borrowable item) {
+        this.items.add(item);
+    }
 
 
     public List<Borrowable> getItems() {

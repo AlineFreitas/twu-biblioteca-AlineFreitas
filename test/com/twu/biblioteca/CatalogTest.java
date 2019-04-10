@@ -27,9 +27,9 @@ public class CatalogTest {
             8,
             "Quentin Tarantino");
 
-            catalog.items.add(book);
+            catalog.addItem(book);
 
-            catalog.items.add(movie);
+            catalog.addItem(movie);
     }
 
     @Test
