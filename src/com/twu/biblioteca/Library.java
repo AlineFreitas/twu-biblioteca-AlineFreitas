@@ -1,11 +1,13 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Library {
 
     private Catalog books;
     private Catalog movies;
+
+    private HashMap <String, String> borrowedBooks = new HashMap<String, String>();
 
     Library() {
         this.books = new Catalog();
@@ -22,11 +24,12 @@ public class Library {
         movies.addItem(new Movie("Pulp Fiction", 1994, 9, "Quentin Tarantino"));
     }
 
-    public boolean borrowItem(String bookTitle) {
+    public boolean borrowItem(Catalog catalog, String title, String libraryNumber) {
+
         return false;
     }
 
-    public boolean returnItem(String bookTitle) {
+    public boolean returnItem(String title) {
         return false;
     }
 
@@ -43,5 +46,13 @@ public class Library {
 
     public void printAvailableMovies() {
         printAvailableItems(movies);
+    }
+
+    public boolean borrowBook(String title, String user_library_id) {
+        return false;
+    }
+
+    public boolean returnBook(String title, String user_library_id) {
+        return false;
     }
 }

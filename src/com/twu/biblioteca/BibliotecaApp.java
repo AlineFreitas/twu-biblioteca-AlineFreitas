@@ -82,7 +82,7 @@ public class BibliotecaApp {
                 }
                 System.out.println("Type the book title to checkout:");
                 bookTitle = input.nextLine();
-                //this.library.borrowBook(bookTitle);
+                //library.borrowBook(bookTitle);
                 break;
 
             case 3:
@@ -98,13 +98,13 @@ public class BibliotecaApp {
             case 5:
                 System.out.println("Type the movie title to checkout:");
                 movieTitle = input.nextLine();
-                //this.library.borrowMovie(movieTitle);
+                //library.borrowMovie(movieTitle);
                 break;
 
             case 6:
                 System.out.println("Type the movie title to return:");
                 movieTitle = input.nextLine();
-                //this.library.returnMovie(movieTitle);
+                //library.returnMovie(movieTitle);
                 break;
 
             case 7:
