@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -131,6 +132,25 @@ public class LibraryTest {
         assertThat(
                 outContent.toString(),
                 is("Kill Bill Vol. 1 | 2003 | Quentin Tarantino | 8\nPulp Fiction | 1994 | Quentin Tarantino | 9\n")
+        );
+    }
+
+
+    @Test
+    public void shouldGetMovieByTitle() {
+
+        Movie movie = library.getMovieByTitle("Kill Bill Vol. 1");
+
+        assertThat(movie, is(killBill));
+    }
+
+    @Test
+    public void shouldBorrowAvailableMovie() {
+
+        library.borrowMovie("Pulp Fiction");
+
+        assertThat(pulpFiction.isAvailable(),
+                is(false)
         );
     }
 

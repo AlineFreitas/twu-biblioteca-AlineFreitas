@@ -1,8 +1,6 @@
 package com.twu.biblioteca;
 
 public class Movie extends Borrowable {
-
-    String title;
     int releaseYar;
     int rating;
     String directorName;

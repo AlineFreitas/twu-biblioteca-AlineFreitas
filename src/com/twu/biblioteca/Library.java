@@ -95,7 +95,32 @@ public class Library {
         return listOfMovies;
     }
 
-    public void borrowMovie(String movieTitle) {
+    public boolean borrowMovie(String movieTitle) {
+
+        Movie movie = getMovieByTitle(movieTitle);
+
+        if (movie == null) {
+            System.out.println("Sorry, that movie is not available");
+            return false;
+        } else {
+            if (movie.isAvailable()) {
+                movie.checkOut();
+                System.out.println("Thank you! Enjoy the movie");
+                return true;
+            }
+        }
+        System.out.println("Sorry, that movie is not available");
+        return false;
+    }
+
+    public Movie getMovieByTitle(String movieTitle) {
+
+        for (Movie movie : movieCatalog) {
+            if (movie.getTitle().equals(movieTitle)) {
+                return movie;
+            }
+        }
+        return null;
     }
 
     public void returnMovie(String movieTitle) {
