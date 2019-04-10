@@ -6,17 +6,17 @@ import java.util.List;
 public class UserHandler {
     private static List<User> userList;
 
-    public static boolean login(String libraryNumber, String password) {
+    public static User login(String libraryNumber, String password) {
         User user = getUserByLibraryNumber(libraryNumber);
 
-        if (user != null) {
-            return user.verifyPassword(password);
+        if (user != null && user.verifyPassword(password)) {
+            return user;
         }
 
-        return false;
+        return null;
     }
 
-    private static User getUserByLibraryNumber(String libraryNumber) {
+    public static User getUserByLibraryNumber(String libraryNumber) {
         for (User user: userList) {
             if (user.getLibraryNumber().equals(libraryNumber)) {
                 return user;
@@ -28,5 +28,6 @@ public class UserHandler {
     public static void setUserList() {
         userList = new ArrayList<User>();
         userList.add(new User("123-4567", "senha"));
+        userList.add(new User("123-4568", "outra senha"));
     }
 }

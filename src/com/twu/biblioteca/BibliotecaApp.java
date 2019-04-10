@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class BibliotecaApp {
 
     private Library library;
+    private User loggedUser;
 
     public static void main(String[] args) {
 
@@ -89,6 +90,9 @@ public class BibliotecaApp {
                 break;
 
             case 2:
+                if (loggedUser == null) {
+                    processOption(7);
+                }
                 System.out.println("Type the book title to checkout:");
                 bookTitle = input.nextLine();
                 this.library.borrowBook(bookTitle);
@@ -117,11 +121,16 @@ public class BibliotecaApp {
                 break;
 
             case 7:
-                System.out.println("Type the library number:");
-                String libraryNumber = input.nextLine();
-                System.out.println("Type the password:");
-                String password = input.nextLine();
-                UserHandler.login(libraryNumber, password);
+                do {
+                    System.out.println("Type the library number:");
+                    String libraryNumber = input.nextLine();
+                    System.out.println("Type the password:");
+                    String password = input.nextLine();
+                    loggedUser = UserHandler.login(libraryNumber, password);
+                    if (loggedUser == null) {
+                        System.out.println("Library number or password are incorrect, please try again");
+                    }
+                } while (loggedUser == null);
                 break;
             default:
                 System.out.println("Please select a valid option!");
