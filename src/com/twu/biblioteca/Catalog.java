@@ -26,7 +26,7 @@ public class Catalog {
         Borrowable item = getByTitle(title);
 
         if (item == null) {
-            System.out.println("Sorry, that" + item.getClass() + "is not available");
+            System.out.println("Sorry, that item is not available");
             return false;
         } else {
             if (item.isAvailable()) {
@@ -36,7 +36,7 @@ public class Catalog {
             }
         }
 
-        System.out.println("Sorry, that" + item.getClass() + "is not available");
+        System.out.println("Sorry, that item is not available");
 
         return false;
     }
@@ -64,6 +64,13 @@ public class Catalog {
     }
 
     public boolean returnItem(String title) {
-        return false;
+        Borrowable item = getByTitle(title);
+
+        if (item == null){
+            return false;
+        } else {
+            item.setAvailable(true);
+            return true;
+        }
     }
 }

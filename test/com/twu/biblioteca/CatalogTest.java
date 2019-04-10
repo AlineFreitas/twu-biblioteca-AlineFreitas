@@ -4,8 +4,7 @@ import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.hasItem;
-import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 public class CatalogTest {
@@ -17,20 +16,20 @@ public class CatalogTest {
     @Before
     public void setUp() {
 
-        catalog = new Catalog();
+            catalog = new Catalog();
 
-        book = new Book("Test Driven Development: By Example",
-                2002,
-                "Kent Beck");
+            book = new Book("Test Driven Development: By Example",
+            2002,
+            "Kent Beck");
 
-        movie = new Movie("Kill Bill Vol. 1",
-                2003,
-                8,
-                "Quentin Tarantino");
+            movie = new Movie("Kill Bill Vol. 1",
+            2003,
+            8,
+            "Quentin Tarantino");
 
-        catalog.items.add(book);
+            catalog.items.add(book);
 
-        catalog.items.add(movie);
+            catalog.items.add(movie);
     }
 
     @Test
@@ -39,8 +38,13 @@ public class CatalogTest {
     }
 
     @Test
-    public void shouldRetrieveItemByTitle() {
+    public void shouldGetItemByTitle() {
         assertThat(catalog.getByTitle("Test Driven Development: By Example"), CoreMatchers.<Borrowable>is(book));
+    }
+
+    @Test
+    public void shouldReturnNullIfRetrievingItemThatDoesntExist() {
+        assertThat(catalog.getByTitle("Ruby: The Bible"), is(nullValue()));
     }
 
     @Test
@@ -64,6 +68,12 @@ public class CatalogTest {
         catalog.borrowItem("Kill Bill Vol. 1");
         catalog.returnItem("Kill Bill Vol. 1");
 
-        assertThat(catalog.getAvailableItems(), not(hasItem(movie)));
+        assertThat(catalog.getAvailableItems(), hasItem(movie));
+    }
+
+    @Test
+    public void shouldNotReturnItemThatDoesntExist() {
+
+        assertThat(catalog.returnItem("Kill Bill Vol. 2"), is(false));
     }
 }
