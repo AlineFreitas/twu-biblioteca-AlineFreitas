@@ -32,7 +32,7 @@ public class Catalog {
         } else {
             if (item.isAvailable()) {
                 item.checkOut();
-                System.out.println("Thank you! Enjoy the " + item.getClass());
+                System.out.println("Thank you! Enjoy the " + item.getClass().getSimpleName());
                 return true;
             }
         }

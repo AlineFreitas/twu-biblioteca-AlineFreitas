@@ -5,9 +5,6 @@ public class Book extends Borrowable {
     private String author;
     private int publishYear;
 
-
-    private boolean available;
-
     Book(String title, int publishYear, String author){
         this.title = title;
         this.publishYear = publishYear;
