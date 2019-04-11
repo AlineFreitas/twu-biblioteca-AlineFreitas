@@ -68,7 +68,7 @@ public class Catalog {
             System.out.println("Thanks for returning the " + item.getClass().getSimpleName());
             return true;
         } else {
-            System.out.println("That is not a valid " + item.getClass().getSimpleName() + " to return.");
+            System.out.println("That is not a valid item to return.");
             return false;
         }
     }
