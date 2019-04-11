@@ -43,27 +43,6 @@ public class BookTest {
     }
 
     @Test
-    public void shouldNotBeAvailableWhenSuccessfullyCheckedOut() {
-
-        book.checkOut();
-
-        assertFalse(
-                book.isAvailable()
-        );
-    }
-
-    @Test
-    public void shouldBecomeAvailableWhenSuccessfullyReturned() {
-
-        book.setAvailable(false);
-        book.checkIn();
-
-        assertTrue(
-                book.isAvailable()
-        );
-    }
-
-    @Test
     public void shouldPrintFormattedMetaInformation() {
 
         assertThat(book.toString(),

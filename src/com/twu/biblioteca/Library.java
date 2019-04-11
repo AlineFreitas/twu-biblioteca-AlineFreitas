@@ -1,103 +1,57 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 public class Library {
 
-    private List<Book> bookCatalog;
-    private List<Movie> movieCatalog;
-    private List<User> userList;
+    private Catalog books;
+    private Catalog movies;
 
-    public Library(List<Book> bookCatalog, List<Movie> movieCatalog) {
-        this.bookCatalog = bookCatalog;
-        this.movieCatalog = movieCatalog;
+    private HashMap <String, String> borrowedBooks = new HashMap<String, String>();
+
+    Library() {
+        this.books = new Catalog();
+        this.movies = new Catalog();
+
+        books.addItem(new Book("TDD By Example", 2002, "Kent Beck"));
+        books.addItem(new Book("The Clean Coder", 2011, "Uncle Bob"));
+        books.addItem(new Book("Clean Code", 2008, "Uncle Bob"));
+        books.addItem(new Book("The Pragmatic Programmer", 1999, "Andrew Hunt"));
+
+        movies.addItem(new Movie("Kill Bill Vol. 1", 2003, 8, "Quentin Tarantino"));
+        movies.addItem(new Movie("Snatch", 2000, 8, "Guy Ritchie"));
+        movies.addItem(new Movie("Get Out", 2017, 8, "Jordan Peele"));
+        movies.addItem(new Movie("Pulp Fiction", 1994, 9, "Quentin Tarantino"));
     }
 
+    private void printAvailableItems(Catalog catalog) {
 
-    public boolean borrowBook(String bookTitle) {
-        Book book = getBookByTitle(bookTitle);
-
-        if (book == null) {
-            System.out.println("Sorry, that book is not available");
-            return false;
-        } else {
-            if (book.isAvailable()) {
-                book.checkOut();
-                System.out.println("Thank you! Enjoy the book");
-                return true;
-            }
+        for (Borrowable item : catalog.getAvailableItems()) {
+            System.out.println(item.toString());
         }
-        System.out.println("Sorry, that book is not available");
-        return false;
-    }
-
-    public boolean returnBook(String bookTitle) {
-        Book book = getBookByTitle(bookTitle);
-
-        if (book == null) {
-            System.out.println("That is not a valid book to return");
-            return false;
-        } else {
-            if (!book.isAvailable()) {
-                book.checkIn();
-                System.out.println("Thank you for returning the book");
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public Book getBookByTitle(String bookTitle) {
-        for (Book book : bookCatalog) {
-            if (book.getTitle().equals(bookTitle)) {
-                return book;
-            }
-        }
-        return null;
-    }
-
-    public List<Book> getListOfAvailableBooks() {
-
-        List<Book> listOfBooks = new ArrayList<Book>();
-
-        for (Book book : bookCatalog) {
-            if (book.isAvailable()) {
-                listOfBooks.add(book);
-            }
-        }
-
-        return listOfBooks;
     }
 
     public void printAvailableBooks() {
-
-        for (Book book : getListOfAvailableBooks()) {
-            System.out.println(book.toString());
-        }
+        printAvailableItems(books);
     }
 
     public void printAvailableMovies() {
-
-        for (Movie movie : getListOfAvailableMovies()) {
-            System.out.println(movie.toString());
-        }
+        printAvailableItems(movies);
     }
 
-    private List<Movie> getListOfAvailableMovies() {
-        List<Movie> listOfMovies = new ArrayList<Movie>();
-
-        for (Movie movie : movieCatalog) {
-            if (movie.isAvailable()) {
-                listOfMovies.add(movie);
-            }
-        }
-        return listOfMovies;
+    public boolean borrowBook(String title, String userLibraryId) {
+        return books.borrowItem(title, userLibraryId);
     }
 
-    public void borrowMovie(String movieTitle) {
+    public boolean returnBook(String title) {
+        return books.returnItem(title);
     }
 
-    public void returnMovie(String movieTitle) {
+    public boolean borrowMovie(String title) {
+        return movies.borrowItem(title, "");
+    }
+
+    public boolean returnMovie(String title) {
+        return movies.returnItem(title);
     }
 }

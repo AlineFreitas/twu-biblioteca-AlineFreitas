@@ -15,6 +15,11 @@ public class MovieTest {
     }
 
     @Test
+    public void shoulHaveTitle(){
+        assertThat(killBill.getTitle(), is("Kill Bill Vol. 1"));
+    }
+
+    @Test
     public void shouldPrintMovieMetadata(){
         assertThat(killBill.toString(), is("Kill Bill Vol. 1 | 2003 | Quentin Tarantino | 8"));
     }

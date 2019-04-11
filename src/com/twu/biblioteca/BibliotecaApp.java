@@ -1,7 +1,5 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class BibliotecaApp {
@@ -14,20 +12,7 @@ public class BibliotecaApp {
         BibliotecaApp bib = new BibliotecaApp();
         BibliotecaApp.greet();
 
-        List<Book> bookCatalog = new ArrayList<Book>();
-        List<Movie> movieCatalog = new ArrayList<Movie>();
-
-        bookCatalog.add(new Book("TDD By Example", 2002, "Kent Beck"));
-        bookCatalog.add(new Book("The Clean Coder", 2011, "Uncle Bob"));
-        bookCatalog.add(new Book("Clean Code", 2008, "Uncle Bob"));
-        bookCatalog.add(new Book("The Pragmatic Programmer", 1999, "Andrew Hunt"));
-
-        movieCatalog.add(new Movie("Kill Bill Vol. 1", 2003, 8, "Quentin Tarantino"));
-        movieCatalog.add(new Movie("Snatch", 2000, 8, "Guy Ritchie"));
-        movieCatalog.add(new Movie("Get Out", 2017, 8, "Jordan Peele"));
-        movieCatalog.add(new Movie("Pulp Fiction", 1994, 9, "Quentin Tarantino"));
-
-        bib.library = new Library(bookCatalog, movieCatalog);
+        bib.library = new Library();
 
         UserHandler.setUserList();
 
@@ -95,7 +80,7 @@ public class BibliotecaApp {
                 }
                 System.out.println("Type the book title to checkout:");
                 bookTitle = input.nextLine();
-                this.library.borrowBook(bookTitle);
+                library.borrowBook(bookTitle, loggedUser.getLibraryNumber());
                 break;
 
             case 3:
@@ -105,19 +90,19 @@ public class BibliotecaApp {
                 break;
 
             case 4:
-                this.library.printAvailableMovies();
+                library.printAvailableMovies();
                 break;
 
             case 5:
                 System.out.println("Type the movie title to checkout:");
                 movieTitle = input.nextLine();
-                this.library.borrowMovie(movieTitle);
+                library.borrowMovie(movieTitle);
                 break;
 
             case 6:
                 System.out.println("Type the movie title to return:");
                 movieTitle = input.nextLine();
-                this.library.returnMovie(movieTitle);
+                library.returnMovie(movieTitle);
                 break;
 
             case 7:

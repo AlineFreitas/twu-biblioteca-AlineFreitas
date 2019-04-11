@@ -4,10 +4,6 @@ public class Book extends Borrowable {
 
     private String author;
     private int publishYear;
-    private String title;
-
-
-    private boolean available;
 
     Book(String title, int publishYear, String author){
         this.title = title;
@@ -19,10 +15,6 @@ public class Book extends Borrowable {
     @Override
     public String toString() {
         return this.title + " | " + this.author + " | " + this.publishYear;
-    }
-
-    public String getTitle() {
-        return this.title;
     }
 
     public int getPublishYear() {
