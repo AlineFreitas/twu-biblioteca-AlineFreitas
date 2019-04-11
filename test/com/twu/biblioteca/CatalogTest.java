@@ -55,17 +55,26 @@ public class CatalogTest {
     }
 
     @Test
-    public void shouldBorrowItem() {
+    public void shouldBorrowAvailableItem() {
 
-        catalog.borrowItem("Kill Bill Vol. 1");
+        catalog.borrowItem("Kill Bill Vol. 1", "123-4567");
         assertThat(catalog.getAvailableItems(), not(hasItem(movie)));
 
     }
 
     @Test
+    public void shouldNotBorrowUnavailableItem() {
+
+        assertThat(catalog.borrowItem("unavailable movie", "123-4567"), is(false));
+
+        catalog.borrowItem("Kill Bill Vol. 1", "123-4567");
+        assertThat(catalog.borrowItem("Kill Bill Vol. 1", "123-4567"), is(false));
+    }
+
+    @Test
     public void shouldReturnItem() {
 
-        catalog.borrowItem("Kill Bill Vol. 1");
+        catalog.borrowItem("Kill Bill Vol. 1", "123-4567");
         catalog.returnItem("Kill Bill Vol. 1");
 
         assertThat(catalog.getAvailableItems(), hasItem(movie));

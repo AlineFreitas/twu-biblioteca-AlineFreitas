@@ -1,12 +1,13 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Catalog {
 
     private List<Borrowable> items;
-    private ArrayList<String> borrow_log;
+    private HashMap<String, String> borrowLog;
 
     public void addItem(Borrowable item) {
         this.items.add(item);
@@ -20,26 +21,21 @@ public class Catalog {
 
     public Catalog() {
         this.items = new ArrayList<Borrowable>();
+        this.borrowLog = new HashMap<String, String>();
     }
 
-    public boolean borrowItem(String title) {
+    public boolean borrowItem(String title, String userLibNumber) {
 
         Borrowable item = getByTitle(title);
 
-        if (item == null) {
+        if (item == null || borrowLog.containsKey(title)) {
             System.out.println("Sorry, that item is not available");
             return false;
         } else {
-            if (item.isAvailable()) {
-                item.checkOut();
-                System.out.println("Thank you! Enjoy the " + item.getClass().getSimpleName());
-                return true;
-            }
+            borrowLog.put(title, userLibNumber);
+            System.out.println("Thank you! Enjoy the " + item.getClass().getSimpleName());
+            return true;
         }
-
-        System.out.println("Sorry, that item is not available");
-
-        return false;
     }
 
     public Borrowable getByTitle(String title) {
@@ -56,7 +52,7 @@ public class Catalog {
         List<Borrowable> available = new ArrayList<Borrowable>();
 
         for (Borrowable item : items) {
-            if (item.isAvailable()) {
+            if (!borrowLog.containsKey(item.getTitle())) {
                 available.add(item);
             }
         }
@@ -67,11 +63,13 @@ public class Catalog {
     public boolean returnItem(String title) {
         Borrowable item = getByTitle(title);
 
-        if (item == null){
-            return false;
-        } else {
-            item.setAvailable(true);
+        if (item != null && borrowLog.containsKey(title)) {
+            borrowLog.remove(title);
+            System.out.println("Thanks for returning the " + item.getClass().getSimpleName());
             return true;
+        } else {
+            System.out.println("That is not a valid " + item.getClass().getSimpleName() + " to return.");
+            return false;
         }
     }
 }

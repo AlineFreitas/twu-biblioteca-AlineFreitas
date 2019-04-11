@@ -24,15 +24,6 @@ public class Library {
         movies.addItem(new Movie("Pulp Fiction", 1994, 9, "Quentin Tarantino"));
     }
 
-    public boolean borrowItem(Catalog catalog, String title, String libraryNumber) {
-
-        return false;
-    }
-
-    public boolean returnItem(String title) {
-        return false;
-    }
-
     private void printAvailableItems(Catalog catalog) {
 
         for (Borrowable item : catalog.getAvailableItems()) {
@@ -48,11 +39,19 @@ public class Library {
         printAvailableItems(movies);
     }
 
-    public boolean borrowBook(String title, String user_library_id) {
-        return false;
+    public boolean borrowBook(String title, String userLibraryId) {
+        return books.borrowItem(title, userLibraryId);
     }
 
-    public boolean returnBook(String title, String user_library_id) {
-        return false;
+    public boolean returnBook(String title) {
+        return books.returnItem(title);
+    }
+
+    public boolean borrowMovie(String title) {
+        return movies.borrowItem(title, "");
+    }
+
+    public boolean returnMovie(String title) {
+        return movies.returnItem(title);
     }
 }

@@ -1,7 +1,5 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class BibliotecaApp {
@@ -82,13 +80,13 @@ public class BibliotecaApp {
                 }
                 System.out.println("Type the book title to checkout:");
                 bookTitle = input.nextLine();
-                //library.borrowBook(bookTitle);
+                library.borrowBook(bookTitle, loggedUser.getLibraryNumber());
                 break;
 
             case 3:
                 System.out.println("Type the book title to return:");
                 bookTitle = input.nextLine();
-                //this.library.returnBook(bookTitle);
+                this.library.returnBook(bookTitle);
                 break;
 
             case 4:
@@ -98,13 +96,13 @@ public class BibliotecaApp {
             case 5:
                 System.out.println("Type the movie title to checkout:");
                 movieTitle = input.nextLine();
-                //library.borrowMovie(movieTitle);
+                library.borrowMovie(movieTitle);
                 break;
 
             case 6:
                 System.out.println("Type the movie title to return:");
                 movieTitle = input.nextLine();
-                //library.returnMovie(movieTitle);
+                library.returnMovie(movieTitle);
                 break;
 
             case 7:

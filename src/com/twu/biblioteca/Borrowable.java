@@ -17,15 +17,4 @@ public class Borrowable {
         this.available = available;
     }
 
-    public void checkOut() {
-        this.available = false;
-    }
-
-    public boolean isAvailable() {
-        return this.available;
-    }
-
-    public void checkIn() {
-        setAvailable(true);
-    }
 }
