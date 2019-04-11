@@ -27,4 +27,12 @@ public class User {
         }
         return false;
     }
+
+    public void printPersonalInfo() {
+        System.out.println("----Personal Information ----");
+        System.out.println("Name: " + this.name);
+        System.out.println("E-mail: " + this.email);
+        System.out.println("Phone Number: " + this.phoneNumber);
+        System.out.println("-----------------------------");
+    }
 }

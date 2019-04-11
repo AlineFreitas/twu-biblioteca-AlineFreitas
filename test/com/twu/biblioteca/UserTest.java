@@ -12,7 +12,7 @@ public class UserTest {
     @Before
     public void setUp() {
 
-        user = new User("123-4567", "password");
+        user = new User("123-4567", "Aline", "aline@dudu.org", "51121234124", "password");
     }
 
     @Test
