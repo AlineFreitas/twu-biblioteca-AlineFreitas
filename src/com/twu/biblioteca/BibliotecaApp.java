@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class BibliotecaApp {
 
     private Library library;
-    private User loggedUser;
+    private static User loggedUser;
 
     public static void main(String[] args) {
 
@@ -46,7 +46,12 @@ public class BibliotecaApp {
                 "5. Check-out Movie\n" +
                 "6. Return Movie");
         System.out.println("--------------User Section-----------------");
-        System.out.println("7. Login");
+
+        if(loggedUser == null) {
+            System.out.println("7. Login");
+        } else {
+            System.out.println("7. View Personal Information");
+        }
         System.out.println("0. Quit application");
     }
 
@@ -106,16 +111,20 @@ public class BibliotecaApp {
                 break;
 
             case 7:
-                do {
-                    System.out.println("Type the library number:");
-                    String libraryNumber = input.nextLine();
-                    System.out.println("Type the password:");
-                    String password = input.nextLine();
-                    loggedUser = UserHandler.login(libraryNumber, password);
-                    if (loggedUser == null) {
-                        System.out.println("Library number or password are incorrect, please try again");
-                    }
-                } while (loggedUser == null);
+                if (loggedUser == null) {
+                    do {
+                        System.out.println("Type the library number:");
+                        String libraryNumber = input.nextLine();
+                        System.out.println("Type the password:");
+                        String password = input.nextLine();
+                        loggedUser = UserHandler.login(libraryNumber, password);
+                        if (loggedUser == null) {
+                            System.out.println("Library number or password are incorrect, please try again");
+                        }
+                    } while (loggedUser == null);
+                } else {
+                    loggedUser.printPersonalInfo();
+                }
                 break;
             default:
                 System.out.println("Please select a valid option!");

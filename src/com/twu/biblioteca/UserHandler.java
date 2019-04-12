@@ -27,7 +27,7 @@ public class UserHandler {
 
     public static void setUserList() {
         userList = new ArrayList<User>();
-        userList.add(new User("123-4567", "senha"));
-        userList.add(new User("123-4568", "outra senha"));
+        userList.add(new User("123-4567", "Aline", "aline@dudu.org", "05109876543", "senha"));
+        userList.add(new User("123-4567", "Eduardo", "dudu@aline.org", "51121234124", "password"));
     }
 }
